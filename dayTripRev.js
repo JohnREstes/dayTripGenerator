@@ -1,15 +1,21 @@
-let destinations = ['the park', 'the beach', 'the woods', 'home'];
-let tranportation = ['car', 'bike', 'bus', 'train', 'Uber'];
-let restaurant = ['The Cheesecake Factory', 'McDonalds', 'Burger King', 'Taco Bell', 'The Dinner', 'Greasy Spoon', 'Chick-fil-a'];
-let entertainment = ['movie', 'concert', 'musical', 'campfire'];
+"use strict";
 
-let curDest = randomdSelectInput(destinations);
-let curTrans = randomdSelectInput(tranportation);
-let curRest = randomdSelectInput(restaurant);
-let curEntert = randomdSelectInput(entertainment);
-let response = "no";
+dayTripGenerator();
 
-displayTrip();
+function dayTripGenerator(){
+
+    let destinations = ['the park', 'the beach', 'the woods', 'home'];
+    let tranportation = ['car', 'bike', 'bus', 'train', 'Uber'];
+    let restaurant = ['The Cheesecake Factory', 'McDonalds', 'Burger King', 'Taco Bell', 'The Dinner', 'a Greasy Spoon', 'Chick-fil-a'];
+    let entertainment = ['movie', 'concert', 'musical', 'campfire'];
+
+    let curDest = randomdSelectInput(destinations);
+    let curTrans = randomdSelectInput(tranportation);
+    let curRest = randomdSelectInput(restaurant);
+    let curEntert = randomdSelectInput(entertainment);
+    let response = "no";
+
+    displayTrip(curDest,curTrans,curRest,curEntert);
 
     do{
         console.log("Are you happy with your trip?", "yes or no");
@@ -19,23 +25,25 @@ displayTrip();
             console.log("ENJOY!");
         }
         else {
-            switchResponsePrompt();
-            displayTrip();
+            switchResponsePrompt(destinations, tranportation, restaurant, entertainment);
+            displayTrip(curDest,curTrans,curRest,curEntert);
         }
     }
     while (response !== "yes"); 
+
+}
 
 function randomdSelectInput(destTranRestEnt){
     let rnd = Math.floor(Math.random() * (destTranRestEnt.length));
     return destTranRestEnt[rnd];
 }
 
-function displayTrip(){
+function displayTrip(curDest, curTrans, curRest, curEntert){
     console.log("You are going to " + curDest + " via a " + curTrans);
     console.log("You will eat at " + curRest + " and go to a " + curEntert);
 }
 
-function switchResponsePrompt(){
+function switchResponsePrompt(destinations, tranportation, restaurant, entertainment){
     console.log("What change would you like to make?");
     console.log("1 to change Destination");
     console.log("2 to change Transportation");
