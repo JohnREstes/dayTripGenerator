@@ -25,7 +25,25 @@ function dayTripGenerator(){
             console.log("ENJOY!");
         }
         else {
-            switchResponsePrompt(destinations, tranportation, restaurant, entertainment);
+            let switchResponse = switchResponsePrompt();
+                switch(switchResponse){
+                    case "1":
+                        curDest = randomdSelectInput(destinations);
+                        break;
+                    case "2":
+                        curTrans = randomdSelectInput(tranportation);
+                        break;
+                    case "3":
+                        curRest = randomdSelectInput(restaurant);
+                        break;
+                    case "4":
+                        curEntert = randomdSelectInput(entertainment);
+                        break;
+                    default:
+                        alert("Whoops, try again!");
+                        break;
+                }
+
             displayTrip(curDest,curTrans,curRest,curEntert);
         }
     }
@@ -43,28 +61,41 @@ function displayTrip(curDest, curTrans, curRest, curEntert){
     console.log("You will eat at " + curRest + " and go to a " + curEntert);
 }
 
-function switchResponsePrompt(destinations, tranportation, restaurant, entertainment){
+
+function switchResponsePrompt(){
+    let switchResponse = "";
     console.log("What change would you like to make?");
     console.log("1 to change Destination");
     console.log("2 to change Transportation");
     console.log("3 to change Restaurant");
     console.log("4 to change Entertainment");
-    let switchResponse = prompt("What change would you like to make?", "1, 2, 3, or 4");
-        switch(switchResponse){
-            case "1":
-                curDest = randomdSelectInput(destinations);
-                break;
-            case "2":
-                curTrans = randomdSelectInput(tranportation);
-                break;
-            case "3":
-                curRest = randomdSelectInput(restaurant);
-                break;
-            case "4":
-                curEntert = randomdSelectInput(entertainment);
-                break;
-            default:
-                alert("Whoops, try again!");
-                break;
-        }
+    return switchResponse = prompt("What change would you like to make?", "1, 2, 3, or 4");
 }
+
+
+
+// function switchResponsePrompt(destinations, tranportation, restaurant, entertainment){
+//     console.log("What change would you like to make?");
+//     console.log("1 to change Destination");
+//     console.log("2 to change Transportation");
+//     console.log("3 to change Restaurant");
+//     console.log("4 to change Entertainment");
+//     let switchResponse = prompt("What change would you like to make?", "1, 2, 3, or 4");
+//         switch(switchResponse){
+//             case "1":
+//                 curDest = randomdSelectInput(destinations);
+//                 break;
+//             case "2":
+//                 curTrans = randomdSelectInput(tranportation);
+//                 break;
+//             case "3":
+//                 curRest = randomdSelectInput(restaurant);
+//                 break;
+//             case "4":
+//                 curEntert = randomdSelectInput(entertainment);
+//                 break;
+//             default:
+//                 alert("Whoops, try again!");
+//                 break;
+//         }
+// }
